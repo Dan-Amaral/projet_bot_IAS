@@ -215,6 +215,36 @@ public class HunterBot extends UT2004BotModuleController<UT2004Bot> {
         
     }
 
+    // APRENTISSAGE PAR RENFORCEMENT
+
+   /* 
+
+if(bot() < min) {
+    // choisir une action au hasard parmi A pour
+    // garantir un taux d'exploration ici fixe
+    a = bot(A)
+  }
+  else {
+    // agir selon l'action qui maximise la recompense
+    // immediate + valeur etat suivant
+    a = argmax/A { R(s,a) + M(s�) }
+  }
+  
+  // observer la recompense immediate obtenue et
+  // la noter dans le tableau des r�compenses r
+  
+  r(s,a) = R(s,a)
+  // mise a jour des etats
+  
+  for (Etat s in espaceEtats)
+   {
+    // la valeur de le etat s est mise a jour grace
+    // a la connaissance de l�environnement acquise
+    V(s) = max/A { r(s,a)+ x * M(s') }
+  }
+
+  */
+
     /**
      * Here we can modify initializing command for our bot.
      *
