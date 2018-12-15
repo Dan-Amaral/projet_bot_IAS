@@ -23,7 +23,7 @@ public class ChoixArme<T>
         int epsilon = 100; // exploration
               
         	
-	public Renforcement_Armes(ArrayList<T> list_armes) 
+	public Renforcement_Armes(ArrayList<T> list_armes) // initialisation de la liste avec tous les armes dispos
 	{
 		init(list_armes);
 	}
@@ -42,9 +42,9 @@ public class ChoixArme<T>
                 }
 	}
 	
-	protected T prendre_arme()
+	protected T prendre_arme() // comparaison avec le taux d'exploration et choix de l'arme
 	{
-		if(resultat == 0 || Math.random()*1000 < epsilon)
+		if(resultat == 0 || Math.random()*100 < epsilon)
 		{
 			return (T)arme.keySet().toArray()[(Math.random()*arme.size())]; 
 		}
@@ -66,7 +66,7 @@ public class ChoixArme<T>
 	}
     
     
-    protected void effet_punition(T arme_ID) 
+    protected void effet_punition(T arme_ID) // Algo d'aprentissage, effets de la punition (bot fait des actions incorrectes)
 	{		
             if(!arme.containsKey(arme_ID)){
                 arme.put(arme_ID, 0.0);
@@ -84,13 +84,13 @@ public class ChoixArme<T>
                 else
                 {
                        arme.put(arme_ID, arme.get(arme_ID) - punition);
-                        resultat = resultat - punition;
+                        resultat = resultat - punition; // decrementation de la punition specifique
                 }
             }
 	}
 
 
-	protected void effet_recompense(T arme_ID) // base sur la taxe d'exploration
+	protected void effet_recompense(T arme_ID) // Algo d'aprentissage, effets de la recompense (bot realise des bonnes actions)
 	{
             if(!arme.containsKey(arme_ID))
             {
@@ -99,12 +99,12 @@ public class ChoixArme<T>
             else
             {
                 arme.put(arme_ID, arme.get(arme_ID) + recompense);
-                resultat = resultat + recompense;              
+                resultat = resultat + recompense; // incrementation de la recompense obtenue             
 
                 if(epsilon  > 5){
                     epsilon--;
                 }
-                if(epsilon < 75){
+                if(epsilon < 75){ // toujours en utilisant le taux d'exploration comme facteur de contrôle
                     epsilon++;
                 }
                 if(epsilon > 20){
@@ -114,7 +114,7 @@ public class ChoixArme<T>
             }
 	}
 	
-    void arme_update(ArrayList<T> liste_arme)
+    void arme_update(ArrayList<T> liste_arme) // Fonction pour garantir que l'arme a une valeur par défault
      {
         for(T w : liste_arme)
         {
@@ -125,7 +125,7 @@ public class ChoixArme<T>
         }
     }
     
-    public List<T> arme_triee()
+    public List<T> arme_triee() // Arme dejà prêt a choisir, alors le bot peut poursuivre l'enemie
     {
         ArrayList<T> armes_triee = new ArrayList<T>();
         boolean chercher = false;
@@ -161,7 +161,7 @@ public class ChoixArme<T>
         
         return txt;
     }
-}
-          // POSSIBLE RETOUR A CLASS PRINCIPAL
-
+	 // POSSIBLE RETOUR A CLASS PRINCIPAL
 */  
+}
+         
